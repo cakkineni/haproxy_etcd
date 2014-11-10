@@ -11,7 +11,7 @@ echo ectd api: $etcd_api
 
 host_ip=""
 i=0
-while [[ "$i" == "0" || "$host_ip" != "" ]]; do
+while [[ "$i" == "0" || "$i" == "1" || "$host_ip" != "" ]]; do
     [[ $i == 0 ]] && { app_name=$APP; } || { app_name=$APP\@${i}; }
     host_ip="$(wget  -qO- ${etcd_api}/$app_name/${app_name}_SERVICE_HOST | grep -Po '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*')"
     echo $host_ip
